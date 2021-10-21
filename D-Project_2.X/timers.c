@@ -8,6 +8,7 @@
 
 #include "xc.h"
 #include "timers.h"
+#include "clocks.h"
 
 //Global variable keeping track of whether Timer2 has triggered
 uint16_t TMR2Flag = 0;
@@ -15,37 +16,25 @@ uint16_t TMR2Flag = 0;
 
 void Delay_ms(uint16_t time_ms){
     
-    //Configure Clock
-    
-    
-    //Configure T2CON Register
-    timer2Config();
+    //Computer PR2
+    PR2 = time_ms;
     
     //Clearing TMR2
     TMR2 = 0;
+    IFS0bits.T2IF = 0;
+    
+    //Configure T2CON Register
+    timer2Config();
     
     //Timer 2 Interrupt Configuration
     timer2InterruptConfig();
     
-    //Computer PR2
-    
-    
     Idle();
-}
-
-
-void Delay_us(uint16_t time_us){
     
-    //Configure Clock
+    T2CONbits.TON = 0;
+    TMR2 = 0;
     
-    
-    //Configure T2CON Register
-    timer2Config();
-    
-    
-    
-    
-    
+    return;
 }
 
 
@@ -58,4 +47,5 @@ void __attribute__((interrupt, no_auto_psv))_T2Interrupt(void){
     
     TMR2Flag = 1;
     
+    return;
 }

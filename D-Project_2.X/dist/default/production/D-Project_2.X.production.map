@@ -69,20 +69,20 @@ Default Scalar Model: Small
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200                0xe0           0x150  (336)
-.text                        0x2e0                0x50            0x78  (120)
-.dinit                       0x330                 0x8             0xc  (12)
-.text                        0x338                 0x6             0x9  (9)
+.text                        0x2e0               0x198           0x264  (612)
+.dinit                       0x478                0x10            0x18  (24)
 
-                 Total "program" memory used (bytes):          0x1dd  (477) 2%
+                 Total "program" memory used (bytes):          0x3cc  (972) 6%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x600]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-.nbss                        0x800                   0             0x2  (2)
+.ndata                       0x800                   0             0x2  (2)
+.nbss                        0x802                   0             0x2  (2)
 
-                 Total "data" memory used (bytes):            0x2  (2) <1%
+                 Total "data" memory used (bytes):            0x4  (4) <1%
 
 
 Dynamic Memory Usage
@@ -90,54 +90,54 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0x802                               0x5fe  (1534)
+stack                        0x804                               0x5fc  (1532)
 
-                 Maximum dynamic memory (bytes):          0x5fe  (1534)
+                 Maximum dynamic memory (bytes):          0x5fc  (1532)
 
 Info: Project is using a large data memory model when small data memory model is sufficient.
 
 
 External Symbols in Data Memory (by address):
 
-                    0x0800                  _TMR2Flag
+                    0x0800                  _timeDelay
+                    0x0802                  _TMR2Flag
 
 External Symbols in Data Memory (by name):
 
-                    0x0800                  _TMR2Flag
+                    0x0802                  _TMR2Flag
+                    0x0800                  _timeDelay
 
 External Symbols in Program Memory (by address):
 
                   0x000200                  __resetPRI
                   0x00023c                  __psv_init
-                  0x000252                  __data_init
                   0x000252                  __data_init_standard
+                  0x000252                  __data_init
                   0x0002c8                  __T2Interrupt
                   0x0002da                  __DefaultInterrupt
-                  0x0002e0                  _Config
-                  0x0002ec                  _timer2Config
-                  0x0002fa                  _timer2InterruptConfig
-                  0x000302                  _Delay_ms
-                  0x00030c                  _Delay_us
-                  0x000316                  _IOinit
-                  0x000324                  _main
-                  0x000338                  _clkConfig
+                  0x0002e0                  _main
+                  0x0003a6                  _NewClk
+                  0x00041a                  _PullUpConfig
+                  0x000426                  _timer2Config
+                  0x000438                  _timer2InterruptConfig
+                  0x00044c                  _Delay_ms
+                  0x000466                  _IOinit
 
 External Symbols in Program Memory (by name):
 
-                  0x0002e0                  _Config
-                  0x000302                  _Delay_ms
-                  0x00030c                  _Delay_us
-                  0x000316                  _IOinit
+                  0x00044c                  _Delay_ms
+                  0x000466                  _IOinit
+                  0x0003a6                  _NewClk
+                  0x00041a                  _PullUpConfig
                   0x0002da                  __DefaultInterrupt
                   0x0002c8                  __T2Interrupt
                   0x000252                  __data_init
                   0x000252                  __data_init_standard
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
-                  0x000338                  _clkConfig
-                  0x000324                  _main
-                  0x0002ec                  _timer2Config
-                  0x0002fa                  _timer2InterruptConfig
+                  0x0002e0                  _main
+                  0x000426                  _timer2Config
+                  0x000438                  _timer2InterruptConfig
 
 Memory Configuration
 
@@ -246,44 +246,46 @@ __FDS
 .comment
  *(.comment)
 
-.debug_info       0x000000        0xfeb
+.debug_info       0x000000       0x1854
  *(.debug_info)
- .debug_info      0x000000        0x140 build/default/production/main.o
- .debug_info      0x000140        0x5c7 build/default/production/config.o
- .debug_info      0x000707        0x441 build/default/production/timers.o
- .debug_info      0x000b48        0x143 build/default/production/clocks.o
- .debug_info      0x000c8b        0x360 build/default/production/gpio.o
+ .debug_info      0x000000        0x472 build/default/production/main.o
+ .debug_info      0x000472        0x693 build/default/production/config.o
+ .debug_info      0x000b05        0x46f build/default/production/timers.o
+ .debug_info      0x000f74        0x558 build/default/production/clocks.o
+ .debug_info      0x0014cc        0x388 build/default/production/gpio.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x2ed
+.debug_abbrev     0x000000        0x489
  *(.debug_abbrev)
- .debug_abbrev    0x000000         0x36 build/default/production/main.o
- .debug_abbrev    0x000036         0xe7 build/default/production/config.o
- .debug_abbrev    0x00011d        0x112 build/default/production/timers.o
- .debug_abbrev    0x00022f         0x34 build/default/production/clocks.o
- .debug_abbrev    0x000263         0x8a build/default/production/gpio.o
+ .debug_abbrev    0x000000         0xae build/default/production/main.o
+ .debug_abbrev    0x0000ae         0xe7 build/default/production/config.o
+ .debug_abbrev    0x000195        0x136 build/default/production/timers.o
+ .debug_abbrev    0x0002cb        0x123 build/default/production/clocks.o
+ .debug_abbrev    0x0003ee         0x9b build/default/production/gpio.o
 
-.debug_line       0x000000        0x3a4
+.debug_line       0x000000        0x58c
  *(.debug_line)
- .debug_line      0x000000         0x37 build/default/production/main.o
- .debug_line      0x000037        0x112 build/default/production/config.o
- .debug_line      0x000149        0x11d build/default/production/timers.o
- .debug_line      0x000266         0x36 build/default/production/clocks.o
- .debug_line      0x00029c        0x108 build/default/production/gpio.o
+ .debug_line      0x000000        0x139 build/default/production/main.o
+ .debug_line      0x000139        0x115 build/default/production/config.o
+ .debug_line      0x00024e        0x121 build/default/production/timers.o
+ .debug_line      0x00036f        0x114 build/default/production/clocks.o
+ .debug_line      0x000483        0x109 build/default/production/gpio.o
 
-.debug_frame      0x000000        0x158
+.debug_frame      0x000000        0x13e
  *(.debug_frame)
  .debug_frame     0x000000         0x2e build/default/production/main.o
  .debug_frame     0x00002e         0x62 build/default/production/config.o
- .debug_frame     0x000090         0x6c build/default/production/timers.o
- .debug_frame     0x0000fc         0x2e build/default/production/clocks.o
- .debug_frame     0x00012a         0x2e build/default/production/gpio.o
+ .debug_frame     0x000090         0x52 build/default/production/timers.o
+ .debug_frame     0x0000e2         0x2e build/default/production/clocks.o
+ .debug_frame     0x000110         0x2e build/default/production/gpio.o
 
-.debug_str        0x000000         0x64
+.debug_str        0x000000         0x9d
  *(.debug_str)
- .debug_str       0x000000         0x27 build/default/production/config.o
- .debug_str       0x000027         0x29 build/default/production/timers.o
- .debug_str       0x000050         0x14 build/default/production/gpio.o
+ .debug_str       0x000000         0x27 build/default/production/main.o
+ .debug_str       0x000027         0x30 build/default/production/config.o
+ .debug_str       0x000057         0x1c build/default/production/timers.o
+ .debug_str       0x000073         0x16 build/default/production/clocks.o
+ .debug_str       0x000089         0x14 build/default/production/gpio.o
 
 .debug_loc
  *(.debug_loc)
@@ -292,18 +294,18 @@ __FDS
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000         0xea
+                  0x000000         0xee
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0x1b build/default/production/main.o
+                  0x000000         0x29 build/default/production/main.o
  .debug_pubnames
-                  0x00001b         0x48 build/default/production/config.o
+                  0x000029         0x4e build/default/production/config.o
  .debug_pubnames
-                  0x000063         0x4a build/default/production/timers.o
+                  0x000077         0x3d build/default/production/timers.o
  .debug_pubnames
-                  0x0000ad         0x20 build/default/production/clocks.o
+                  0x0000b4         0x1d build/default/production/clocks.o
  .debug_pubnames
-                  0x0000cd         0x1d build/default/production/gpio.o
+                  0x0000d1         0x1d build/default/production/gpio.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -730,60 +732,61 @@ LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
-                  0x000078        0x175
+                  0x000078        0x262
  .debug_pubtypes
-                  0x000078         0x12 build/default/production/main.o
+                  0x000078         0x7a build/default/production/main.o
  .debug_pubtypes
-                  0x00008a         0x99 build/default/production/config.o
+                  0x0000f2         0xb6 build/default/production/config.o
  .debug_pubtypes
-                  0x000123         0x5b build/default/production/timers.o
+                  0x0001a8         0x5b build/default/production/timers.o
  .debug_pubtypes
-                  0x00017e         0x12 build/default/production/clocks.o
+                  0x000203         0x7a build/default/production/clocks.o
  .debug_pubtypes
-                  0x000190         0x5d build/default/production/gpio.o
+                  0x00027d         0x5d build/default/production/gpio.o
 
 __c30_signature
-                  0x0001ed         0x2a
+                  0x0002da         0x2a
  __c30_signature
-                  0x0001ed          0x6 build/default/production/main.o
+                  0x0002da          0x6 build/default/production/main.o
  __c30_signature
-                  0x0001f3          0x6 build/default/production/config.o
+                  0x0002e0          0x6 build/default/production/config.o
  __c30_signature
-                  0x0001f9          0x6 build/default/production/timers.o
+                  0x0002e6          0x6 build/default/production/timers.o
  __c30_signature
-                  0x0001ff          0x6 build/default/production/clocks.o
+                  0x0002ec          0x6 build/default/production/clocks.o
  __c30_signature
-                  0x000205          0x6 build/default/production/gpio.o
+                  0x0002f2          0x6 build/default/production/gpio.o
  __c30_signature
-                  0x00020b          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(crt0_standard.o)
+                  0x0002f8          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(crt0_standard.o)
  __c30_signature
-                  0x000211          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(data_init_standard.o)
+                  0x0002fe          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(data_init_standard.o)
 
-.nbss               0x0800          0x2
- .nbss              0x0800          0x2 build/default/production/timers.o
-                    0x0800                  _TMR2Flag
+.ndata              0x0800          0x2
+ .ndata             0x0800          0x2 build/default/production/main.o
+                    0x0800                  _timeDelay
+
+.nbss               0x0802          0x2
+ .nbss              0x0802          0x2 build/default/production/timers.o
+                    0x0802                  _TMR2Flag
 
 .ivt._T2Interrupt
                   0x000022          0x2
  .ivt._T2Interrupt
                   0x000022          0x2 build/default/production/timers.o
 
-.text             0x0002e0         0x50
- .text            0x0002e0         0x22 build/default/production/config.o
-                  0x0002e0                  _Config
-                  0x0002ec                  _timer2Config
-                  0x0002fa                  _timer2InterruptConfig
- .text            0x000302         0x14 build/default/production/timers.o
-                  0x000302                  _Delay_ms
-                  0x00030c                  _Delay_us
- .text            0x000316          0xe build/default/production/gpio.o
-                  0x000316                  _IOinit
- .text            0x000324          0xc build/default/production/main.o
-                  0x000324                  _main
+.text             0x0002e0        0x198
+ .text            0x0002e0         0xc6 build/default/production/main.o
+                  0x0002e0                  _main
+ .text            0x0003a6         0x74 build/default/production/clocks.o
+                  0x0003a6                  _NewClk
+ .text            0x00041a         0x32 build/default/production/config.o
+                  0x00041a                  _PullUpConfig
+                  0x000426                  _timer2Config
+                  0x000438                  _timer2InterruptConfig
+ .text            0x00044c         0x1a build/default/production/timers.o
+                  0x00044c                  _Delay_ms
+ .text            0x000466         0x12 build/default/production/gpio.o
+                  0x000466                  _IOinit
 
-.dinit            0x000330          0x8
- .dinit           0x000330          0x8 data_init
-
-.text             0x000338          0x6
- .text            0x000338          0x6 build/default/production/clocks.o
-                  0x000338                  _clkConfig
+.dinit            0x000478         0x10
+ .dinit           0x000478         0x10 data_init

@@ -19,12 +19,7 @@ void IOinit(void){
     //Setting Output
     TRISBbits.TRISB8 = 0;
     
-    return;
-}
-
-void IOcheck(void){
-    
-    
+    AD1PCFG = 0xFFFF;
     
     return;
 }
