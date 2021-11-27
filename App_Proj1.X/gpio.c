@@ -11,14 +11,14 @@
 void IOinit(void){
     
     //Setting Inputs
-    TRISAbits.TRISA2 = 1;
-    TRISAbits.TRISA4 = 1;
-    TRISBbits.TRISB4 = 1;
+    TRISAbits.TRISA2 = 1;  // Set RA2 as input
+    TRISAbits.TRISA4 = 1;  // Set RA4 as input
+    TRISBbits.TRISB4 = 1;  // Set RB4 as input
     
-    //Setting Output
-    TRISBbits.TRISB8 = 0;
+    //Setting Output (LED))
+    TRISBbits.TRISB8 = 0;  // Set RB8 as output
     
-    AD1PCFG = 0xFFFF;
+    AD1PCFG = 0xFFFF; // ????
     
     return;
 }

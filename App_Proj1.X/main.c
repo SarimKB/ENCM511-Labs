@@ -54,6 +54,8 @@
 #include "config.h"
 #include "gpio.h"
 #include "timers.h"
+#include "interrupts.h"
+#include "displayer.h"
 
 #define PB1 PORTAbits.RA2
 #define PB2 PORTAbits.RA4
@@ -61,25 +63,46 @@
 #define LED_out LATBbits.LATB8
 
 //Global variable for the time delay
-uint16_t oneSecDelay = 8000;
+//uint16_t oneSecDelay = 8000;
 
-//Timer variables
-unsigned int timeLeft_min = 0;
-unsigned int timeLeft_sec = 0;
+// user defined global variable used as a flag
+int CN1flag = 0;
+int CN0flag = 0;
+int CN30flag = 0;
+
+//Timer variables, global
+//unsigned int timeLeft_min = 0;
+//unsigned int timeLeft_sec = 0;
 
 int main(void) {
     
     //Configuring inputs and output
     IOinit();
     
+    //Initialize CN interrupts, and configure
+    CN_Interrupt_Config();
+    
+    //Initialize pullups for inputs
+    PullUpConfig();
+    
     //Enabling Pull Ups
     PullUpConfig();
     
+    //Initialize timer T2
+    timer2Config();
+    
+    //Initialize interrupts for T2
+    timer2InterruptConfig();
+    
+    
+/*    
     while(1){
         
         //Reset LED
         LED_out = 0;
-        
+ 
+
+ 
         //When PB1 is pressed. Incrementing minutes count
         while(PB1 == 0){
             
@@ -111,23 +134,20 @@ int main(void) {
         
         
     }
+ */
+    while(1){
+        // loop to run idle / sleep mode
+        Idle();
+//        uint16_t delay = 16000;
+//        LED_out = 1;
+//        Delay_ms(delay);
+//        LED_out = 0;
+//        Delay_ms(delay);
+    }
+    
+
+    
     return 0;
 }
 
-//Displays current time on the terminal
-void dispTimeTerm(void){
-    
-    Disp2String("\r");
-    Disp2Dec(timeLeft_min);
-    Disp2String("m : ");
-    if(timeLeft_sec < 10){
-        Disp2Dec(0);
-        Disp2Dec(timeLeft_sec);
-    }
-    else{
-        Disp2Dec(timeLeft_sec);
-    }
-    Disp2String("s");
-    
-    return;
-}
+
