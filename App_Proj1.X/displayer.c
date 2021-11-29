@@ -14,7 +14,7 @@ void dispTimeTerm(unsigned int timeLeft_min, unsigned int timeLeft_sec){
     char min[3];
     char sec[3];
     
-    Disp2String("\r");
+    Disp2String("\r\n");
     Disp2String("\e[1;1H\e[2J");
     
     sprintf(min, "%d", timeLeft_min);
@@ -31,7 +31,7 @@ void dispTimeTerm(unsigned int timeLeft_min, unsigned int timeLeft_sec){
          Disp2String(sec);
     }
     Disp2String("s");
-    Disp2String("\r\n");
+    //Disp2String("\r\n");
     
     return;
 }

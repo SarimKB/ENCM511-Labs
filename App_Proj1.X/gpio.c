@@ -18,7 +18,7 @@ void IOinit(void){
     //Setting Output (LED))
     TRISBbits.TRISB8 = 0;  // Set RB8 as output
     
-    AD1PCFG = 0xFFFF; // ????
+    AD1PCFG = 0xFFFF;      // Digital IO Config
     
     return;
 }

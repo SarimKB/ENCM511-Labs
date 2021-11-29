@@ -9,10 +9,6 @@
 #include "xc.h"
 #include "timers.h"
 
-//Global variable keeping track of whether Timer2 has triggered
-//uint16_t TMR2Flag = 0;
-
-
 void Delay_ms(uint16_t time_ms){
     
     //Computer PR2

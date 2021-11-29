@@ -14,6 +14,7 @@
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>.</sourceRootElem>
+                <sourceRootElem>../Driv_Project4.X</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

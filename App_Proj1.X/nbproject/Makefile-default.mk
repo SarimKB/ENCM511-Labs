@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c UART2.c config.c gpio.c timers.c interrupts.c displayer.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c UART2.c config.c gpio.c timers.c interrupts.c displayer.c ChangeClk.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/UART2.o ${OBJECTDIR}/config.o ${OBJECTDIR}/gpio.o ${OBJECTDIR}/timers.o ${OBJECTDIR}/interrupts.o ${OBJECTDIR}/displayer.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/UART2.o.d ${OBJECTDIR}/config.o.d ${OBJECTDIR}/gpio.o.d ${OBJECTDIR}/timers.o.d ${OBJECTDIR}/interrupts.o.d ${OBJECTDIR}/displayer.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/UART2.o ${OBJECTDIR}/config.o ${OBJECTDIR}/gpio.o ${OBJECTDIR}/timers.o ${OBJECTDIR}/interrupts.o ${OBJECTDIR}/displayer.o ${OBJECTDIR}/ChangeClk.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/UART2.o.d ${OBJECTDIR}/config.o.d ${OBJECTDIR}/gpio.o.d ${OBJECTDIR}/timers.o.d ${OBJECTDIR}/interrupts.o.d ${OBJECTDIR}/displayer.o.d ${OBJECTDIR}/ChangeClk.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/UART2.o ${OBJECTDIR}/config.o ${OBJECTDIR}/gpio.o ${OBJECTDIR}/timers.o ${OBJECTDIR}/interrupts.o ${OBJECTDIR}/displayer.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/UART2.o ${OBJECTDIR}/config.o ${OBJECTDIR}/gpio.o ${OBJECTDIR}/timers.o ${OBJECTDIR}/interrupts.o ${OBJECTDIR}/displayer.o ${OBJECTDIR}/ChangeClk.o
 
 # Source Files
-SOURCEFILES=main.c UART2.c config.c gpio.c timers.c interrupts.c displayer.c
+SOURCEFILES=main.c UART2.c config.c gpio.c timers.c interrupts.c displayer.c ChangeClk.c
 
 
 
@@ -137,6 +137,12 @@ ${OBJECTDIR}/displayer.o: displayer.c  .generated_files/flags/default/67ec9e5757
 	@${RM} ${OBJECTDIR}/displayer.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  displayer.c  -o ${OBJECTDIR}/displayer.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/displayer.o.d"      -g -D__DEBUG     -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
+${OBJECTDIR}/ChangeClk.o: ChangeClk.c  .generated_files/flags/default/6cfc50b925d9b128aaf933600d53cb08bdfb52c .generated_files/flags/default/ea2a7066b12fd53932fd9a63046cd42f96dd5fb4
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ChangeClk.o.d 
+	@${RM} ${OBJECTDIR}/ChangeClk.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ChangeClk.c  -o ${OBJECTDIR}/ChangeClk.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ChangeClk.o.d"      -g -D__DEBUG     -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
 else
 ${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/bdf2d30bbbe61157abf84006ca1ccc5da63db075 .generated_files/flags/default/ea2a7066b12fd53932fd9a63046cd42f96dd5fb4
 	@${MKDIR} "${OBJECTDIR}" 
@@ -179,6 +185,12 @@ ${OBJECTDIR}/displayer.o: displayer.c  .generated_files/flags/default/5f87e861b3
 	@${RM} ${OBJECTDIR}/displayer.o.d 
 	@${RM} ${OBJECTDIR}/displayer.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  displayer.c  -o ${OBJECTDIR}/displayer.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/displayer.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/ChangeClk.o: ChangeClk.c  .generated_files/flags/default/900c0a1b4d69c5dc75a872344b6b5280e25728d .generated_files/flags/default/ea2a7066b12fd53932fd9a63046cd42f96dd5fb4
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ChangeClk.o.d 
+	@${RM} ${OBJECTDIR}/ChangeClk.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ChangeClk.c  -o ${OBJECTDIR}/ChangeClk.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ChangeClk.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 endif
 

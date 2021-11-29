@@ -10,6 +10,7 @@
       <itemPath>timers.h</itemPath>
       <itemPath>interrupts.h</itemPath>
       <itemPath>displayer.h</itemPath>
+      <itemPath>ChangeClk.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -25,6 +26,7 @@
       <itemPath>timers.c</itemPath>
       <itemPath>interrupts.c</itemPath>
       <itemPath>displayer.c</itemPath>
+      <itemPath>ChangeClk.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -34,6 +36,7 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>.</Elem>
+    <Elem>../Driv_Project4.X</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -743,6 +746,8 @@
         <property key="periphComp5.gte" value="gt"/>
         <property key="periphComp6.gte" value="gt"/>
         <property key="poweroptions.powerenable" value="true"/>
+        <property key="programmerToGoFilePath"
+                  value="C:/Users/Sarim/Desktop/Programming stuff/PIC/ENCM 511/App_Proj1.X/debug/default/App_Proj1_ptg"/>
         <property key="programmerToGoImageName" value="App_Proj1_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
